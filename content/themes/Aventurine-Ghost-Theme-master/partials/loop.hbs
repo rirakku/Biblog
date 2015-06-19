@@ -1,0 +1,35 @@
+{{! This is the post loop - each post will be output using this markup }}
+
+<div class="row uniform">
+    <header class="12u$ section-header"><h1>What's new?</h1></header>
+{{#foreach posts}}
+    <div class="row uniform">
+        {{#if image}}
+        <section class="loop-excerpt 4u 12u$(2)">
+        {{else}}
+        <section class="loop-excerpt 12u$">
+        {{/if}}
+
+            <div class="post-container">
+                <header class="post-header">
+                    <h3 class="post-title {{#if featured}}post-featured{{/if}}"><a href="{{url}}">{{title}}</a></h3>
+                    <p class="post-meta">by {{author}} on <time class="blog-date" datetime="{{date format='MMMM DD, YYYY'}}">{{date format="MMMM DD, YYYY"}}</time></p>
+                </header>
+                <article class="post-content">
+                    <p>{{excerpt characters="300"}}...</p>
+                </article>
+                <a href="{{url}}" class="read-more">Read More »</a>
+            </div>
+        </section>
+        {{#if image}}
+            <section class="loop-image 8u$ 12u$(2)">
+                <a href="{{url}}" class="feature-image"><img src="{{image}}" /></a>
+            </section>
+        {{/if}}
+        {{#if @last}}
+        {{else}}
+        <div class="12u$"><hr/></div>
+        {{/if}}
+    </div>
+{{/foreach}}
+</div>
